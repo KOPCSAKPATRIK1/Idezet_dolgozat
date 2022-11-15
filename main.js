@@ -1,1 +1,1 @@
-(()=>{"use strict";document.addEventListener("DOMContentLoaded",(()=>{console.log("Loaded")}))})();
+(()=>{"use strict";document.addEventListener("DOMContentLoaded",(()=>{let e;console.log("Loaded"),async function(){let t=await fetch("/quotes.json");e=await t.json()}(),document.getElementById("betolt").addEventListener("click",(()=>{!function(e){let t=document.getElementById("idezetek");e=e.sort(((e,t)=>e.author.localeCompare(t.author)));for(let o of e){let e=document.createElement("li");e.innerHTML=o.author+": "+o.quote,t.appendChild(e)}}(e.quotes)}))}))})();
