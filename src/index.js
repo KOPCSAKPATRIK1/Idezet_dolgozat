@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function Betolt(quotesLista) {
     let szulo = document.getElementById("idezetek");
+    szulo.innerHTML = " ";
     quotesLista = quotesLista.sort((a, b) => a.author.localeCompare(b.author));
 
     for (let e of quotesLista) {
@@ -23,9 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function koverites(idezetekList) {
+    let szulo = document.getElementById("boldIdezetek");
+    szulo.innerHTML = " ";
     for (let e of idezetekList) {
       let li = document.createElement("li");
-      let szulo = document.getElementById("boldIdezetek");
       let quotes = e.quote.split(" ");
 
       for (let i = 0; i < quotes.length; i++) {
@@ -36,8 +38,17 @@ document.addEventListener("DOMContentLoaded", () => {
         li.innerHTML += quotes[i] + " ";
       }
       szulo.appendChild(li);
-
     }
+  }
+
+  function szamolas(lista) {
+    let szamok = [];
+    let p = document.getElementById("szamok");
+    for (let e of lista) {
+      szamok.push(e.quote.length);
+    }
+    let text = szamok.join(", ");
+    p.innerHTML = text;
   }
 
   document.getElementById("betolt").addEventListener("click", () => {
@@ -46,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("koverites").addEventListener("click", () => {
     koverites(eredmeny.quotes);
   });
-
-
-
+  document.getElementById("szamolas").addEventListener("click", () => {
+    szamolas(eredmeny.quotes);
+  });
 });
